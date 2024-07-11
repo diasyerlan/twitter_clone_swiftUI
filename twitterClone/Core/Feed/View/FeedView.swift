@@ -11,6 +11,7 @@ import SwiftUI
 struct FeedView: View {
     var body: some View {
         ScrollView {
+            Spacer(minLength: 20)
             ForEach(0..<20, id: \.self) { _ in
                 TweetRowView()
             }

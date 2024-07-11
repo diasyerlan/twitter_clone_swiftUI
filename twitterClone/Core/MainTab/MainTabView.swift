@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @State var selectedTab = 0
     var body: some View {
-        @State var selectedTab = 0
         TabView(selection: $selectedTab) {
             FeedView()
                 .onTapGesture {

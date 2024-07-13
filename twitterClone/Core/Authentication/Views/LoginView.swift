@@ -11,6 +11,7 @@ struct LoginView: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var email = ""
     @State private var password = ""
+    
     var body: some View {
         VStack {
             AuthenticationHeaderView(title1: "Hello.", title2: "Welcome Back")

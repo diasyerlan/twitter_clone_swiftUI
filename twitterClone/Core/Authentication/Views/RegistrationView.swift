@@ -14,7 +14,7 @@ struct RegistrationView: View {
     @State private var fullName = ""
     @State private var password = ""
     @Environment(\.dismiss) var dismiss
-
+    
     var body: some View {
         VStack {
             AuthenticationHeaderView(title1: "Get Started.", title2: "Create Your Account")

@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomInputField: View {
     let image: String
     let placeholder: String
+    let securePassword: Bool? = true
     @Binding var text: String
     var body: some View {
         VStack {
@@ -19,8 +20,11 @@ struct CustomInputField: View {
                     .scaledToFit()
                     .frame(width: 20, height: 20)
                     .foregroundColor(Color(.darkGray))
-                
-                TextField(placeholder, text: $text)
+                if securePassword ?? true {
+                    SecureField(placeholder, text: $text)
+                } else {
+                    TextField(placeholder, text: $text)
+                }
             }
             Divider()
                 .background(Color(.darkGray))

@@ -16,10 +16,47 @@ class AuthViewModel: ObservableObject {
     }
     
     func login(withEmail email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("DEBUG - Failed to sign in user with error - \(error.localizedDescription)")
+                return
+            }
+            guard let user = result?.user else { return }
+            self.userSession = user
+            
+            print("DEBUG - User signed in successfuly!")
+            print("Debug - User is \(self.userSession)")
+        }
         print("DEBUG - Logged in with \(email)")
     }
     
     func register(email: String, username: String, fullName: String, password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("DEBUG - Failed to register user with error - \(error.localizedDescription)")
+                return
+            }
+            
+            guard let user = result?.user else { return }
+            self.userSession = user
+            
+            print("DEBUG - User registered successfuly!")
+            print("Debug - User is \(self.userSession)")
+            
+            let data = ["email": email, "username": username, "fullName": fullName, "password": password]
+            
+            Firestore.firestore().collection("users")
+                .document(user.uid)
+                .setData(data) { _ in
+                    print("DEBUG - User data uploaded successfuly!")
+                }
+        }
         print("DEBUG - Registered with \(email)")
+        
+    }
+    
+    func signOut() {
+        userSession = nil
+        try? Auth.auth().signOut()
     }
 }

@@ -61,6 +61,7 @@
 		3FC771952C416D9600CF7FE4 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3FC771942C416D9600CF7FE4 /* FirebaseStorageCombine-Community */; };
 		3FC771972C416D9600CF7FE4 /* FirebaseVertexAI-Preview in Frameworks */ = {isa = PBXBuildFile; productRef = 3FC771962C416D9600CF7FE4 /* FirebaseVertexAI-Preview */; };
 		3FC771992C41D79100CF7FE4 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC771982C41D79100CF7FE4 /* AuthViewModel.swift */; };
+		3FC7719B2C45931B00CF7FE4 /* ProfilePhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC7719A2C45931B00CF7FE4 /* ProfilePhotoSelectorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		3FC7715B2C4158E700CF7FE4 /* AuthenticationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHeaderView.swift; sourceTree = "<group>"; };
 		3FC7715D2C41694D00CF7FE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FC771982C41D79100CF7FE4 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		3FC7719A2C45931B00CF7FE4 /* ProfilePhotoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoSelectorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +411,7 @@
 			children = (
 				3FC771522C41478000CF7FE4 /* LoginView.swift */,
 				3FC771582C4158BF00CF7FE4 /* RegistrationView.swift */,
+				3FC7719A2C45931B00CF7FE4 /* ProfilePhotoSelectorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				3F4BD5662C3E88A50066779B /* TweetRowView.swift in Sources */,
 				3F4BD57B2C3FBDBA0066779B /* TweetFilterViewModel.swift in Sources */,
 				3F4BD5632C3E744F0066779B /* FeedView.swift in Sources */,
+				3FC7719B2C45931B00CF7FE4 /* ProfilePhotoSelectorView.swift in Sources */,
 				3FC771992C41D79100CF7FE4 /* AuthViewModel.swift in Sources */,
 				3F4BD5872C3FFF7B0066779B /* SideMenuView.swift in Sources */,
 				3F4BD5892C4000ED0066779B /* UserStatsView.swift in Sources */,

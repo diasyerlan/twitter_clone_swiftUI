@@ -16,14 +16,16 @@ struct RegistrationView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
+    
         VStack {
+            NavigationLink(value: "add photo", label: {})
             AuthenticationHeaderView(title1: "Get Started.", title2: "Create Your Account")
             
             VStack(spacing: 40) {
                 CustomInputField(image: "envelope", placeholder: "Email", text: $email)
                 CustomInputField(image: "person", placeholder: "Username", text: $username)
                 CustomInputField(image: "person", placeholder: "Full Name", text: $fullName)
-                CustomInputField(image: "lock", placeholder: "Password", text: $password)
+                CustomInputField(image: "lock", placeholder: "Password", text: $password, securePassword: true)
             }
             .padding(32)
             
@@ -56,6 +58,9 @@ struct RegistrationView: View {
             }
         }
         .ignoresSafeArea()
+        .navigationDestination(isPresented: $viewModel.didAuthenticateUser) {
+            ProfilePhotoSelectorView()
+        }
     }
 }
 

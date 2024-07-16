@@ -12,10 +12,10 @@ struct ContentView: View {
     @State private var showMenu = false
     var body: some View {
         Group {
-            if viewModel.userSession != nil {
-                mainInterfaceView
-            } else {
+            if viewModel.userSession == nil {
                 LoginView()
+            } else {
+                mainInterfaceView
             }
         }
     }

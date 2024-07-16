@@ -10,8 +10,8 @@ import SwiftUI
 struct CustomInputField: View {
     let image: String
     let placeholder: String
-    let securePassword: Bool? = true
     @Binding var text: String
+    var securePassword: Bool? = false
     var body: some View {
         VStack {
             HStack {

@@ -10,6 +10,9 @@ import Firebase
 
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
+    @Published var didAuthenticateUser = false
+    private var tempUserSession: FirebaseAuth.User?
+    
     init() {
         self.userSession = Auth.auth().currentUser
         print("DEBUG - User session is \(String(describing: userSession)) ")
@@ -25,7 +28,7 @@ class AuthViewModel: ObservableObject {
             self.userSession = user
             
             print("DEBUG - User signed in successfuly!")
-            print("Debug - User is \(self.userSession)")
+            print("Debug - User is \(String(describing: self.userSession))")
         }
         print("DEBUG - Logged in with \(email)")
     }
@@ -38,17 +41,14 @@ class AuthViewModel: ObservableObject {
             }
             
             guard let user = result?.user else { return }
-            self.userSession = user
-            
-            print("DEBUG - User registered successfuly!")
-            print("Debug - User is \(self.userSession)")
+            self.tempUserSession = user
             
             let data = ["email": email, "username": username, "fullName": fullName, "password": password]
             
             Firestore.firestore().collection("users")
                 .document(user.uid)
                 .setData(data) { _ in
-                    print("DEBUG - User data uploaded successfuly!")
+                    self.didAuthenticateUser = true
                 }
         }
         print("DEBUG - Registered with \(email)")
@@ -58,5 +58,17 @@ class AuthViewModel: ObservableObject {
     func signOut() {
         userSession = nil
         try? Auth.auth().signOut()
+    }
+    
+    func uploadProfileImage(_ image: UIImage) {
+        guard let uid = tempUserSession?.uid else { return }
+        
+        ImageUploader.uploadImage(image: image) { profileImageURL in
+            Firestore.firestore().collection("users")
+                .document(uid)
+                .updateData(["profileImageUrl": profileImageURL]) { _ in
+                    self.userSession = self.tempUserSession
+                }
+        }
     }
 }
